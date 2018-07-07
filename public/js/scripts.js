@@ -312,7 +312,7 @@ function addMarker(place)
     // load articles in info window upon label click
     // "showInfo" es una función descrta más abajo
     marker.addListener("click", function() { 
-        $.getJSON("articles.php", "geo=" + place.place_name)
+        $.getJSON("/public/articles.php", "geo=" + place.place_name)
             .done(function(data, textStatus, jqXHR) {
                 // if there are any articles
                 // add items in data to list
@@ -485,7 +485,7 @@ function search(query, cs ,cb)
         geo: query
     };
     console.log(parameters);
-    $.getJSON("search.php", parameters)
+    $.getJSON("/public/search.php", parameters)
     .done(function(data, textStatus, jqXHR) {
 
         // call typeahead's callback with search results (i.e., places)
@@ -545,7 +545,7 @@ function update()
         q: $("#q").val(),
         sw: sw.lat() + "," + sw.lng()
     };
-    $.getJSON("update.php", parameters)
+    $.getJSON("/public/update.php", parameters)
     .done(function(data, textStatus, jqXHR) {
 
         // remove old markers from map
