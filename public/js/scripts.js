@@ -293,7 +293,7 @@ function addMarker(place)
     // TODO
     var markerLatLong = new google.maps.LatLng(parseFloat(place.latitude), parseFloat(place.longitude));
     //var label = place["place_name"] + ", " + place["admin_name1"];
-    var pic = "/img/newsicon.png"; //"http://maps.google.com/mapfiles/kml/pal2/icon31.png";
+    var pic = "/public/img/newsicon.png"; //"http://maps.google.com/mapfiles/kml/pal2/icon31.png";
 
 
     // create labeled marker
@@ -407,58 +407,58 @@ function configure()
         source: search,
         templates: {
             empty: "no places found yet",
-            suggestion: _.template("<p><%- place_name %>, <%- admin_name1 %>, <%- postal_code %></p>")
-        }
-    });
+              suggestion: _.template("<p><%- place_name %>, <%- admin_name1 %>, <%- postal_code %></p>")
+          }
+      });
 
-    // re-center map after place is selected from drop-down
-    $("#q").on("typeahead:selected", function(eventObject, suggestion, name) {
-      console.log("typeahead select");
-        // ensure coordinates are numbers
-        var latitude = (_.isNumber(suggestion.latitude)) ? suggestion.latitude : parseFloat(suggestion.latitude);
-        var longitude = (_.isNumber(suggestion.longitude)) ? suggestion.longitude : parseFloat(suggestion.longitude);
+      // re-center map after place is selected from drop-down
+      $("#q").on("typeahead:selected", function(eventObject, suggestion, name) {
+        console.log("typeahead select");
+          // ensure coordinates are numbers
+          var latitude = (_.isNumber(suggestion.latitude)) ? suggestion.latitude : parseFloat(suggestion.latitude);
+          var longitude = (_.isNumber(suggestion.longitude)) ? suggestion.longitude : parseFloat(suggestion.longitude);
 
-        // set map's center
-        map.setCenter({lat: latitude, lng: longitude});
+          // set map's center
+          map.setCenter({lat: latitude, lng: longitude});
 
-        // update UI
-        update();
-    });
+          // update UI
+          update();
+      });
 
-    // hide info window when text box has focus
-    $("#q").focus(function(eventData) {
-        hideInfo();
-    });
+      // hide info window when text box has focus
+      $("#q").focus(function(eventData) {
+          hideInfo();
+      });
 
-    // re-enable ctrl- and right-clicking (and thus Inspect Element) on Google Map
-    // https://chrome.google.com/webstore/detail/allow-right-click/hompjdfbfmmmgflfjdlnkohcplmboaeo?hl=en
-    document.addEventListener("contextmenu", function(event) {
-        event.returnValue = true; 
-        event.stopPropagation && event.stopPropagation(); 
-        event.cancelBubble && event.cancelBubble();
-    }, true);
+      // re-enable ctrl- and right-clicking (and thus Inspect Element) on Google Map
+      // https://chrome.google.com/webstore/detail/allow-right-click/hompjdfbfmmmgflfjdlnkohcplmboaeo?hl=en
+      document.addEventListener("contextmenu", function(event) {
+          event.returnValue = true; 
+          event.stopPropagation && event.stopPropagation(); 
+          event.cancelBubble && event.cancelBubble();
+      }, true);
 
-    // update UI
-    update();
+      // update UI
+      update();
 
-    // give focus to text box
-    $("#q").focus();
-}
+      // give focus to text box
+      $("#q").focus();
+  }
 
-/**
- * Hides info window.
- */
-function hideInfo()
-{
-    info.close();
-}
+  /**
+   * Hides info window.
+   */
+  function hideInfo()
+  {
+      info.close();
+  }
 
-/**
- * Removes markers from map.
- */
-function removeMarkers()
-{
-    //TODO
+  /**
+   * Removes markers from map.
+   */
+  function removeMarkers()
+  {
+      //TODO
     //esta los borra todos y no permite ver nada de marcadores
     //clearMarkers();
     //markers = [];
@@ -478,7 +478,7 @@ function removeMarkers()
 /**
  * Searches database for typeahead's suggestions.
  */
-function search(query, cs ,cb)
+function search(query, cb)
 {
     // get places matching query (asynchronously)
     var parameters = {
