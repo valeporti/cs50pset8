@@ -478,7 +478,7 @@ function removeMarkers()
 /**
  * Searches database for typeahead's suggestions.
  */
-function search(query, cb)
+function search(query, cs ,cb)
 {
     // get places matching query (asynchronously)
     var parameters = {
@@ -496,6 +496,7 @@ function search(query, cb)
 
         // log error to browser's console
         console.log(errorThrown.toString());
+        //console.log(jqXHR.responseText);
     });
 }
 
